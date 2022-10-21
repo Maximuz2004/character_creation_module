@@ -1,10 +1,10 @@
 from random import randint
-from typing import Optional
 
 from graphic_arts.start_game_banner import run_screensaver
 
 
 def attack(char_name: str, char_class: str) -> str:
+    """Возвращает строку с количеством урона персонажем."""
     if char_class == 'warrior':
         damage: int = 5 + randint(3, 5)
         return f'{char_name} нанёс урон противнику равный {damage}'
@@ -18,6 +18,7 @@ def attack(char_name: str, char_class: str) -> str:
 
 
 def defence(char_name: str, char_class: str) -> str:
+    """Возвращает строку с блокированным уроном от атаки."""
     if char_class == 'warrior':
         damage = 0 + randint(5, 10)
         return f'{char_name} блокировал {damage} урона'
@@ -31,6 +32,7 @@ def defence(char_name: str, char_class: str) -> str:
 
 
 def special(char_name: str, char_class: str) -> str:
+    """Возвращает строку с примененным специальным умением."""
     if char_class == 'warrior':
         return f'{char_name} применил специальное умение «Выносливость {105}»'
     if char_class == 'mage':
@@ -41,6 +43,7 @@ def special(char_name: str, char_class: str) -> str:
 
 
 def start_training(char_name: str, char_class: str) -> str:
+    """Начало тренировки."""
     if char_class == 'warrior':
         print(f'{char_name}, ты Воитель — отличный боец ближнего боя.')
     if char_class == 'mage':
@@ -53,7 +56,7 @@ def start_training(char_name: str, char_class: str) -> str:
         'defence — чтобы блокировать атаку противника или special — '
         'чтобы использовать свою суперсилу.')
     print('Если не хочешь тренироваться, введи команду skip.')
-    cmd: Optional[str] = None
+    cmd: str = None
     while cmd != 'skip':
         cmd = input('Введи команду: ')
         if cmd == 'attack':
@@ -65,9 +68,10 @@ def start_training(char_name: str, char_class: str) -> str:
     return 'Тренировка окончена.'
 
 
-def choice_char_class() -> Optional[str]:
-    approve_choice: Optional[str] = None
-    char_class: Optional[str] = None
+def choice_char_class() -> str:
+    """Выбор персонажа."""
+    approve_choice: str = None
+    char_class: str = None
     while approve_choice != 'y':
         char_class = input(
             'Введи название персонажа, за которого хочешь играть: '
